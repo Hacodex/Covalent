@@ -48,6 +48,14 @@ def signup():
 # -- LOG IN ROUTE
 @app.route('/login', methods=['POST', 'GET'])
 def login():
+    if request.method=='POST':
+        users = mongo.db.users
+        login_user = users.find_one({'email' : request.form['email']})
+        if login_user:
+            if(bcrypt.hashpw(request.form['password'].encode('utf-8'), login_user['password'].encode('utf-8')) == login_user["password"].encode('utf-8')): 
+                session['email'] = request.form['email']
+                return redirect(url_for('index'))
+        return 'Invalid email/password combination :/'
     return(render_template('login.html'))
 
 
