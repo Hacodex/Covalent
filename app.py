@@ -38,7 +38,11 @@ def signup():
         users = mongo.db.users
         existing_user = users.find_one({'name' : request.form['email']})
         if existing_user is None: ## -- Checks to see if there is someone with this email inputted
-            encrypred_pw = request.form['password']
+            encrypted_pw = request.form['password']
+            users.insert({'email' : request.form['email'], 'password' : encrypted_pw, "name" : request.form['fullname'], 'username' : request.form['username'], 'phone' : request.form['phone']}) # Adds info to database
+            session['email'] = request.form['email']
+            return redirect(url_for('survey'))
+        return('That email is already linked to another account! Try logging in!')
     return render_template('signup.html')
 
 # -- LOG IN ROUTE
