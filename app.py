@@ -73,7 +73,7 @@ def survey():
             return redirect('/')
         info = mongo.db.info 
         scores = mongo.db
-        
+
     return render_template('survey.html')
 
 @app.route('/user/<username>')
@@ -82,6 +82,13 @@ def user(username):
 
 @app.route('/connect')
 def connect():
+    usersDB = mongo.db.users.find({})
+    infoDB = mongo.db.info.find({})
+    allUserData = []
+    for user in usersDB:
+        allUserData.append(user)
+    for i in range(len(tmp[i])):
+        allUserData[i].update(tmp[i])
     return render_template('connect.html')
 
 @app.route('/add')
