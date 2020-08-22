@@ -38,6 +38,8 @@ def signup():
     if request.method=='POST':
         users = mongo.db.users
         existing_user = users.find_one({'name' : request.form['email']})
+        if existing_user is None: ## -- Checks to see if there is someone with this email inputted
+            encrypred_pw = request.form['password']
     return render_template('signup.html')
 
 @app.route('/add')
