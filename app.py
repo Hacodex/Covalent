@@ -33,6 +33,13 @@ def index():
 
 # CONNECT TO DB, ADD DATA
 
+app.route('/signup', methods=['POST','GET'])
+def signup():
+    if request.method=='POST':
+        users = mongo.db.users
+        existing_user = users.find_one({'name' : request.form['email']})
+    return render_template('signup.html')
+
 @app.route('/add')
 
 def add():
