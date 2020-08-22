@@ -62,11 +62,15 @@ def login():
 # -- LOG OUT ROUTE
 @app.route('/logout')
 def logout():
+    session.clear()
     return redirect('/')
 
 # -- SURVEY ROUTE 
 @app.route('/survey', methods=['POST','GET'])
 def survey():
+    if request.method=='POST': 
+        if not session:
+            return redirect('/')
     return render_template('survey.html')
 
 @app.route('/user/<username>')
