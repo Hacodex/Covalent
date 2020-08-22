@@ -52,11 +52,24 @@ def login():
 def logout():
     return redirect('/')
 
+# -- SURVEY ROUTE 
+@app.route('/survey', methods=['POST','GET'])
+def survey():
+    return render_template('survey.html')
+
+@app.route('/user/<username>')
+def user(username):
+    return(render_template('user.html'))
+
+@app.route('/connect')
+def connect():
+    return render_template('connect.html')
+
 @app.route('/add')
 def add():
     # connect to the database
-
+    users = mongo.db.users
     # insert new data
-
+    users.insert({"hi":"HELLO"})
     # return a message to the user
-    return ""
+    return "Connection succesfful!"
