@@ -86,7 +86,13 @@ def survey():
 
 @app.route('/user/<username>')
 def user(username):
-    return(render_template('user.html'))
+    info = mongo.db.info
+    users = mongo.db.users
+    basic = users.find_one({'username' : username})
+    if basic:
+        user_info = info.find_one({'email' : basic['email']})
+        return render_template('user.html', basic=basic, user_info=user_info)
+    return "Sorry, no profile. <a href='/index'>Return to welcome page</a>"
 
 @app.route('/connect')
 def connect():
