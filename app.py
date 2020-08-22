@@ -28,7 +28,14 @@ mongo = PyMongo(app)
 @app.route('/index')
 
 def index():
-    return render_template('index.html', events = events)
+        jamesChu = {"name": "James Chu", "contact": "jameschu@umich.edu", "role": "Front and Backend Developer", "description": "I am an incoming freshman at the University of Michigan and I plan on studying computer science and business. Over quarantine, I've been drinking a lot of oat milk and I have a black lab named Parker. I hope to one day work in the FinTech industry."}
+    winsonChen = {"name": "Winson Chen", "contact": "winsonc@umich.edu", "role": "Front and Backend Developer", "description": "I am a student who is interested in computer engineering. I spend my weekends playing games, reading books, and listening to music on Spotify. Fluent in English, Chinese (kind of), and Pokémon type match-ups"}
+    aaronZheng = {"name": "Aaron Zheng", "contact": "aaronzg@umich.edu", "role": "Front and Backend Developer", "description": "I like playing basketball. I am going to major in computer science. I want to become an entrepreneur. I like problem solving. My dream job is to work at Google."}
+    winstonCai = {"name": "Winston Cai", "contact": "", "role": "Supporting cast", "description": "Winston Cai is a high school graduate from the Bronx High School of Science. I am interested in the humanities."}
+    devTeam = [jamesChu, winsonChen, aaronZheng, winstonCai]
+    devPictures = ["https://www.bxsml.org/images/james.png", "https://media-exp1.licdn.com/dms/image/C4E03AQEZfz3_MHQOPg/profile-displayphoto-shrink_800_800/0?e=1603324800&v=beta&t=-d1pAMh1b1o998JAkwRIObB_iJl6sQZajKSWQKvBTg8", "https://media-exp1.licdn.com/dms/image/C4D03AQEmAsrlxua3lA/profile-displayphoto-shrink_800_800/0?e=1603324800&v=beta&t=k1lxF4VfyTvl75WpUGvo2UiqC4QljZ3Uzw_ORRelV0s", "https://media-exp1.licdn.com/dms/image/C4D03AQENNgwoEmNeyA/profile-displayphoto-shrink_200_200/0?e=1603324800&v=beta&t=KdBQfIBaZ0zMX6hzdFLj51LJAlQM946BiPtgQHXINgo"]
+    loggedIn = session
+    return render_template('index.html', **locals())
 
 
 # -- SIGN UP ROUTE
