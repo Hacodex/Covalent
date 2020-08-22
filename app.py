@@ -31,8 +31,7 @@ def index():
     return render_template('index.html', events = events)
 
 
-# CONNECT TO DB, ADD DATA
-
+# -- SIGN UP ROUTE
 app.route('/signup', methods=['POST','GET'])
 def signup():
     if request.method=='POST':
@@ -42,8 +41,18 @@ def signup():
             encrypred_pw = request.form['password']
     return render_template('signup.html')
 
-@app.route('/add')
+# -- LOG IN ROUTE
+@app.route('/login', methods=['POST', 'GET'])
+def login():
+    return(render_template('login.html'))
 
+
+# -- LOG OUT ROUTE
+@app.route('/logout')
+def logout():
+    return redirect('/')
+
+@app.route('/add')
 def add():
     # connect to the database
 
