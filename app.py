@@ -71,6 +71,9 @@ def survey():
     if request.method=='POST': 
         if not session:
             return redirect('/')
+        info = mongo.db.info 
+        scores = mongo.db
+        
     return render_template('survey.html')
 
 @app.route('/user/<username>')
