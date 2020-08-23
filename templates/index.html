@@ -12,10 +12,10 @@
       <div class="topnav navbar-dark bg-primary">
           <a class="Logo" href='index'><strong>Home</strong></a>
           {% if not loggedIn %}
-          <a href="login"><strong>Login</strong></a>
-          <a href="signup"><strong>Signup</strong></a>
+          <a href="login"><strong>Login/Signup</strong></a>
           {% endif %}
           {% if loggedIn %}
+          <a href="connect"><strong>Connect</strong></a>
           <a href="logout"><strong>Logout</strong></a>
           {% endif %}
       </div>
@@ -53,10 +53,6 @@
         <p>
           Using natural language processing, we can give you an optimal work team.
         </p>
-      <h4><strong>Chat Application</strong></h4>
-        <p>
-          Message other people on our website!
-        </p>
         <hr>
     </div>
     
@@ -92,12 +88,11 @@
       <!-- ./Team member -->
 
   </div>  
-  </body>
 
+  </body>
   <footer>
     <p>@2020 Copyright. Covalent. Non Profit Organization</p>
     <a href="#mission"> About Us </a>
     <a href="#team"> The Team</a>
   </footer>
-</html>
 </html>
