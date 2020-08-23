@@ -16,3 +16,8 @@ body {
     background-color: #FFF;
     margin: 0 auto;
 }
+
+#Covalentlogo {
+    position : fixed;
+    left : 0px;
+}
