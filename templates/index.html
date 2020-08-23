@@ -1,20 +1,25 @@
 <!DOCTYPE html>
 <html>
   <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+  <!-- <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script> -->
   <head>
     <title>Covalent</title>
     <link href="./static/css/index.css" rel="stylesheet">
   </head>
   <body>
     <header>
-      <ul>
-        <li class= "Logo"><strong>Home</strong></li>
-        <li><a href="login"><strong>Login</strong></a></li>
-        <li><a href="signup"><strong>Signup</strong></a></li>
-        <li><a href="logout"><strong>Logout</strong></a></li>
-      </ul>
+      <div class="topnav navbar-dark bg-primary">
+          <img id="Covalentlogo" src="https://i.ibb.co/PQfmCM7/IMG-6-A1-AD6-B31015-1.jpg" alt="Covalent Logo">
+          <a id="Home" href='index'><strong>Home</strong></a>
+          {% if not loggedIn %}
+          <a id="LoginSignup" href="login"><strong>Login/Signup</strong></a>
+          {% endif %}
+          {% if loggedIn %}
+          <a id="Connect" href="connect"><strong>Connect</strong></a>
+          <a id="Logout" href="logout"><strong>Logout</strong></a>
+          {% endif %}
+      </div>
     </header>
     
     <div class = "Welcome">
@@ -23,7 +28,7 @@
     </div>
     
     <div class = "Description">
-      <h3>Our Mission</h3>
+      <h3 id="mission">Our Mission</h3>
         <p>
           In the midst of the COVID-19 pandemic,
           most colleges and universities have decided
@@ -39,22 +44,22 @@
           their school and classes and potentially create 
           lifelong friendships.
         </p>
+        <hr>
       <h4><strong>Find Friends</strong></h4>
       <p>
         Find new friends based on your courses, location, personality, and school.
       </p>
+      <hr>
       <h4><strong>Team Builder</strong></h4>
         <p>
           Using natural language processing, we can give you an optimal work team.
         </p>
-      <h4><strong>Chat Application</strong></h4>
-        <p>
-          Message other people on our website!
-        </p>
+        <hr>
     </div>
     
+    <h3 id="dev">Development Team</h3>
     <div class="row">
-      {% for user in devTeam %}
+      {% for i in range(4) %}
       <!-- Team member -->
       <div class="col-xs-24 col-sm-12 col-md-3">
           <div class="image-flip" >
@@ -62,19 +67,18 @@
                   <div class="frontside">
                       <div class="card">
                           <div class="card-body text-center">
-                              <p><img class=" img-fluid" src="https://api.adorable.io/avatars/285/{{ user["user_email"] }}.png" alt="card image"></p>
-                              <h3 class="card-title"> {{ user["name"] }} </h3>
-                              <h5 class="card-text"> {{ user["contact"] }} </h5>
-                              <h7 class="card-text"> {{ user["role"]}} </h7>
-                              <a href="https://www.fiverr.com/share/qb8D02" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></a>
+                              <p><img class=" img-fluid" src= "{{ devPictures[i] }}" alt="card image"></p>
+                              <h3 class="card-title"> {{ devTeam[i]["name"] }} </h3>
+                              <h5 class="card-text"> {{ devTeam[i]["contact"] }} </h5>
+                              <h7 class="card-text"> {{ devTeam[i]["role"]}} </h7>
                           </div>
                       </div>
                   </div>
                   <div class="backside">
                       <div class="card">
                           <div class="card-body text-center mt-2">
-                              <h4 class="card-title">{{ user["name"] }}</h4>
-                              <h5> Biography: {{ user['description'] }} </h5>
+                              <h4 class="card-title">{{ devTeam[i]["name"] }}</h4>
+                              <h5> Biography: {{ devTeam[i]['description'] }} </h5>
                           </div>
                       </div>
                   </div>
@@ -85,10 +89,11 @@
       <!-- ./Team member -->
 
   </div>  
-  </body>
 
+  </body>
   <footer>
     <p>@2020 Copyright. Covalent. Non Profit Organization</p>
+    <a href="#mission"> About Us </a>
+    <a href="#team"> The Team</a>
   </footer>
-</html>
 </html>
