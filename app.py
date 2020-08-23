@@ -37,32 +37,31 @@ def index():
     loggedIn = session
     return render_template('index.html', **locals())
 
-
-# -- SIGN UP ROUTE
-app.route('/signup', methods=['POST','GET'])
-def signup():
-    if request.method=='POST':
-        users = mongo.db.users
-        existing_user = users.find_one({'name' : request.form['email']})
-        if existing_user is None: ## -- Checks to see if there is someone with this email inputted
-            encrypted_pw = request.form['password']
-            users.insert({'email' : request.form['email'], 'password' : encrypted_pw, "name" : request.form['fullname'], 'username' : request.form['username'], 'phone' : request.form['phone']}) # Adds info to database
-            session['email'] = request.form['email']
-            return redirect(url_for('survey'))
-        return('That email is already linked to another account! Try logging in!')
-    return render_template('signup.html')
-
-# -- LOG IN ROUTE
+# -- LOG IN AND SIGN UP TOGETHER ROUTE 
 @app.route('/login', methods=['POST', 'GET'])
 def login():
     if request.method=='POST':
+        print("1")
         users = mongo.db.users
+        info = mongo.db.info
         login_user = users.find_one({'email' : request.form['email']})
         if login_user:
+            print("2")
             if(bcrypt.hashpw(request.form['password'].encode('utf-8'), login_user['password'].encode('utf-8')) == login_user["password"].encode('utf-8')): 
                 session['email'] = request.form['email']
+                print("3")
                 return redirect(url_for('index'))
-        return 'Invalid email/password combination :/'
+        if len(request.form) != 5:
+            print("4")
+            return 'Invalid email/password combination 😕'
+        if login_user is None: # -- Checks to see if there is already someone with the email inputted
+            print("5")
+            encrypted_pw = str(bcrypt.hashpw(request.form['password'].encode("utf-8"), bcrypt.gensalt()), 'utf-8') #Encrypts password using bcrypt
+            users.insert({'email' : request.form['email'], 'password' : encrypted_pw, 'name' : request.form['fullname'], 'username' : request.form['username'], 'phone' : request.form['phone']}) # Inserts data into mongodb database in format of a dictionary
+            session['email'] = request.form['email'] # Sets session cookie to email so user is logged in
+            return redirect(url_for('survey')) # Sends user to index page
+        return('That email is already associated with another account. Try logging in!') # Since user already has email this message is shown
+    print("0")
     return(render_template('login.html'))
 
 
