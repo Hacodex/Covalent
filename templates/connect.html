@@ -92,7 +92,43 @@
                     <!-- ./Team member -->
                 </ul>
             </div>
-    
+            <div class="School">
+                <h2>Friends in School</h2>
+                <ul> 
+                    {% for person in friendsSchool %}
+                    {% if person.name != "" %}
+                    <li>
+                    <!-- Team member -->
+                        <div class="col-">
+                            <div class="image-flip" >
+                                <div class="mainflip flip-0">
+                                    <div class="frontside">
+                                        <div class="card">
+                                            <div class="card-body text-center">
+                                                <p><img class=" img-fluid" src="https://api.adorable.io/avatars/285/{{ person.email }}.png" alt="card image"></p>
+                                                <h3 class="card-title"> {{ person.name.title() }} </h3>
+                                                <h5 class="card-text"> {{ person.city.title() }} </h5>
+                                                <h7 class="card-text"> {{ person.school.title() }} </h7>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="backside">
+                                        <div class="card">
+                                            <div class="card-body text-center mt-2">
+                                                <h4 class="card-title">{{ person.name.title() }}</h4>
+                                                <h5>{{ person.origText }} </h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    {% endif %}
+                    {% endfor %}
+                    <!-- ./Team member -->
+                </ul>
+            </div>
         </div>
     </body>
     <footer>
