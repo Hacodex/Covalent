@@ -65,3 +65,74 @@ header {
             color: white;
         }
 
+        .Welcome {
+            background-color: #BEE7B8;
+            box-sizing: border-box;
+            padding: 40px;
+            position: relative;
+            text-align: center;
+            width: 100%;
+        }
+            .Welcome h1 {
+                color: black;
+                font-family: 'Poppins', sans-serif;
+                font-size: 32px;
+                font-weight: 300;
+                text-transform: uppercase;
+            }
+        
+        ul {
+            display: table;
+            margin: 0 auto;
+            text-align: center;
+            list-style-type: none;
+            width: auto;
+        }
+        
+        li {
+            color: black;
+            font-family: 'Poppins', sans-serif;
+            float: left;
+            width: 450px;
+            font-size: 16px;
+            font-weight: 300;
+        }
+        
+        
+        .Team {
+            background-color: #DBE9EE;
+            position: relative;
+            text-align: center;
+            height: auto;
+            padding-top: 40px;
+        } 
+        
+        .Location {
+            background-color: white;
+            padding: 40px 20px;
+            box-sizing: border-box;
+            position: relative;
+            text-align: center;
+            margin: 20 20;
+            height: auto;
+        }
+        
+        .School {
+            background-color: #DBE9EE;
+            padding: 40px 20px;
+            box-sizing: border-box;
+            position: relative;
+            text-align: center;
+            margin: 20 20;
+            height: auto;
+        }
+        
+        .Classes {
+            background-color: white;
+            padding: 40px 20px;
+            box-sizing: border-box;
+            position: relative;
+            text-align: center;
+            margin: 20 20;
+            height: auto;
+        }
