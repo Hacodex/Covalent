@@ -1,40 +1,28 @@
 <html>
-    <head>
-        <title>
-            Log In Page
-        </title>
-        <link href="./static/css/login.css" rel="stylesheet">
-    </head>
-    <body>
-        <h1>Log In Page</h1>
-        <form action='/login' method='POST'>
-            <div class="d-flex justify-content-center">
-                <div class="card mt-5 col-md-4 animated bounceInDown myForm">
-                    <div class="card-body">
-                        <form>
-                            <div id="dynamic_container">
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text br-15"><i class="fas fa-user-graduate"></i></span>
-                                    </div>
-                                    <input type="email" name='email' placeholder="Email" class="form-control" required/>
-                                </div>
-                                <div class="input-group mt-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text br-15"><i class="fas fa-phone-square"></i></span>
-                                    </div>
-                                    <input type="password" name='password' placeholder="Password" class="form-control" required/>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="card-footer">
-                        <button class="btn btn-success btn-sm float-right submit_btn"><i class="fas fa-arrow-alt-circle-right"></i> Log In
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </form>
-        <p><a href='/signup'>Sign up for an account</a></p>
-    </body>
-</html> 
+
+<head>
+    <title>Covalent</title>
+    <link href="./static/css/login.css" rel="stylesheet">
+</head>
+
+<body>
+    <p class="tip">Click on button in image container</p>
+    <div class="cont">
+        <div class="form sign-in">
+            <h2>Welcome back,</h2>
+            <label>
+                <span>Email</span>
+                <input type="email" />
+            </label>
+            <label>
+                <span>Password</span>
+                <input type="password" />
+                <button type="button" class="submit">Sign In</button>
+            </label>
+        </div>
+    </div>
+    </form>
+    <p><a href='/signup'>Sign up for an account</a></p>
+</body>
+
+</html>
