@@ -1,0 +1,33 @@
+*, *:before, *:after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+    background: #ededed;
+  }
+  
+  input, button {
+    border: none;
+    outline: none;
+    background: none;
+    font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+  }
+  
+  $contW: 900px;
+  $imgW: 260px;
+  $formW: $contW - $imgW;
+  $switchAT: 1.2s;
+  
+  $inputW: 260px;
+  $btnH: 36px;
+  
+  $diffRatio: ($contW - $imgW) / $contW;
+  
+  @mixin signUpActive {
+    .cont.s--signup & {
+      @content;
+    }
+  }
