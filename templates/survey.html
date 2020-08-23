@@ -1,60 +1,56 @@
 <html>
-    <head>
-        <title>
-            Survey Page
-        </title>
-        <link href="./static/css/survey.css" rel="stylesheet">
-    </head>
-    <body>
-        <form action='/survey' method='POST'>
-            <div class="d-flex justify-content-center">
-                <div class="card mt-5 col-md-4 animated bounceInDown myForm">
-                    <div class="card-header">
-                        <h4>Survey</h4>
-                    </div>
-                    <div class="card-body">
-                        <form>
-                            <div id="dynamic_container">
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text br-15"><i class="fas fa-user-graduate"></i></span>
-                                    </div>
-                                    <input type="text" name='description' placeholder="Tell us about yourself in a paragraph (1,000 characters max):" class="form-control" required/>
-                                    <textarea maxlength='1000' rows=5 cols=35 name='description'> </textarea>
-                                </div>
-                                <div class="input-group mt-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text br-15"><i class="fas fa-phone-square"></i></span>
-                                    </div>
-                                    <input type="text" name='state' placeholder="Which state do you reside in?" class="form-control" required/>
-                                </div>
-                                <div class="input-group mt-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text br-15"><i class="fas fa-at"></i></span>
-                                    </div>
-                                    <input type="text" name = "city" placeholder="Which city do you reside in?" class="form-control" required/>
-                                </div>
-                                <div class="input-group mt-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text br-15"><i class="fas fa-at"></i></span>
-                                    </div>
-                                    <input type="text" name = "school" placeholder="Which University do you attend?" class="form-control" required/>
-                                </div>
-                                <div class="input-group mt-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text br-15"><i class="fas fa-at"></i></span>
-                                    </div>
-                                    <input type="text" name = "classes" placeholder="What classes are you taking?" class="form-control" required/>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="card-footer">
-                        <button class="btn btn-success btn-sm float-right submit_btn"><i class="fas fa-arrow-alt-circle-right"></i> Submit
-                        </button>
-                    </div>
-                </div>
+
+<head>
+    <link href="./static/css/survey.css" rel="stylesheet">
+    <title>
+        Survey
+    </title>
+</head>
+
+<body>
+    <div class="questionnaire">
+        <h1>Survey</h1>
+        
+        <form action="/survey" method="POST">
+            <div class="option">
+                    <label>Tell us about yourself (1,000 character max)</label>
+                <br>
+                <textarea name="description" maxlength="1000" rows=5 cols=50 required></textarea>
+            </div>
+            <div class="option">
+                <label>
+                    <span>Which state do you live in?</span>
+                    <br>
+                    <input type="text" name="state" required />
+                </label>
+
+            </div>
+            <div class="option">
+                <label>
+                    <span>Which city do you live in?</span>
+                    <br>
+                    <input type="text" name="city" required />
+                </label>
+            </div>
+            <div class="option">
+                <label>
+                    <span>Which school do you attend?</span>
+                    <br>
+                    <input type="text" name="school" required />
+                </label>
+            </div>
+            <div class="option">
+                <label>
+                    <span>What classes do you take?</span>
+                    <br>
+                    <input type="text" name="classes" required />
+                </label>
+            </div>
+            <div class="button">
+                <button type="submit">Submit</button>
             </div>
         </form>
-    </body>
+    </div>
+</body>
+
 </html>
