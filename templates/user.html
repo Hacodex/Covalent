@@ -44,14 +44,15 @@ body {
 <body>
     <header>
       <div class="topnav navbar-dark bg-primary">
-          <a class="Logo" href='../index'><strong>Home</strong></a>
+          <img id="Covalentlogo" src="https://i.ibb.co/PQfmCM7/IMG-6-A1-AD6-B31015-1.jpg" alt="Covalent Logo">
+          <a id="Home" href='index'><strong>Home</strong></a>
           {% if not loggedIn %}
-          <a href="login"><strong>Login</strong></a>
-          <a href="signup"><strong>Signup</strong></a>
+          <a id="LoginSignup" href="login"><strong>Login/Signup</strong></a>
           {% endif %}
           {% if loggedIn %}
-          <a href="connect"><strong>Connect</strong></a>
-          <a href="logout"><strong>Logout</strong></a>
+          <a id="Connect" href="connect"><strong>Connect</strong></a>
+          <a id="Post" href="createPost"><strong>Create a Post</strong></a>
+          <a id="Logout" href="logout"><strong>Logout</strong></a>
           {% endif %}
       </div>
     </header>
