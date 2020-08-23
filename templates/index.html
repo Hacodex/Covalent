@@ -53,8 +53,9 @@
         </p>
     </div>
     
+    <img src = "">
     <div class="row">
-      {% for user in devTeam %}
+      {% for i in range(4) %}
       <!-- Team member -->
       <div class="col-xs-24 col-sm-12 col-md-3">
           <div class="image-flip" >
@@ -62,19 +63,18 @@
                   <div class="frontside">
                       <div class="card">
                           <div class="card-body text-center">
-                              <p><img class=" img-fluid" src="https://api.adorable.io/avatars/285/{{ user["user_email"] }}.png" alt="card image"></p>
-                              <h3 class="card-title"> {{ user["name"] }} </h3>
-                              <h5 class="card-text"> {{ user["contact"] }} </h5>
-                              <h7 class="card-text"> {{ user["role"]}} </h7>
-                              <a href="https://www.fiverr.com/share/qb8D02" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></a>
+                              <p><img class=" img-fluid" src= "{{ devPictures[i] }}" alt="card image"></p>
+                              <h3 class="card-title"> {{ devTeam[i]["name"] }} </h3>
+                              <h5 class="card-text"> {{ devTeam[i]["contact"] }} </h5>
+                              <h7 class="card-text"> {{ devTeam[i]["role"]}} </h7>
                           </div>
                       </div>
                   </div>
                   <div class="backside">
                       <div class="card">
                           <div class="card-body text-center mt-2">
-                              <h4 class="card-title">{{ user["name"] }}</h4>
-                              <h5> Biography: {{ user['description'] }} </h5>
+                              <h4 class="card-title">{{ devTeam[i]["name"] }}</h4>
+                              <h5> Biography: {{ devTeam[i]['description'] }} </h5>
                           </div>
                       </div>
                   </div>
