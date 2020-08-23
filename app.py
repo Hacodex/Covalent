@@ -6,6 +6,10 @@ from flask_pymongo import PyMongo
 import bcrypt
 import model
 import os
+import requests
+import timeit
+import csv
+import datetime
 
 # -- Initialization section --
 app = Flask(__name__)
@@ -56,7 +60,6 @@ def login():
             session['email'] = request.form['email'] # Sets session cookie to email so user is logged in
             return redirect(url_for('survey')) # Sends user to index page
         return('That email is already associated with another account. Try logging in!') # Since user already has email this message is shown
-    print("0")
     return(render_template('login.html'))
 
 
@@ -69,12 +72,38 @@ def logout():
 # -- SURVEY ROUTE 
 @app.route('/survey', methods=['POST','GET'])
 def survey():
-    if request.method=='POST': 
+    start = timeit.default_timer()
+    if request.method=='POST':
         if not session:
             return redirect('/')
-        info = mongo.db.info 
-        scores = mongo.db
-        info.insert({'email' : session['email'], 'description' : request.form['description'], 'state' : request.form['state'], 'city' : request.form['city'], 'school' : request.form['school'], 'classes' : request.form['classes']})
+        info = mongo.db.info
+        scores = mongo.db.scores
+        inputDict = {'email' : session['email'], 'description' : request.form['description'], 'state' : request.form['state'], 'city' : request.form['city'], 'school' : request.form['school'], 'classes' : request.form['classes']}
+        info.insert(inputDict)
+        
+        ##Load Embeddings Once To Reduce Runtime
+        with open('./csv/Word_List.csv', newline='', encoding="utf-8") as f:
+            reader = csv.reader(f)
+            print(reader)
+            wordList = list(reader)
+            wordList = [elem[0] for elem in wordList]
+            del wordList[0]
+        with open('./csv/GloVe_Embeddings_1.csv', newline='', encoding="utf-8") as f:
+            reader = csv.reader(f)
+            tmp1 = list(reader)
+            del tmp1[0]
+        with open('./csv/GloVe_Embeddings_2.csv', newline='', encoding="utf-8") as f:
+            reader = csv.reader(f)
+            tmp2 = list(reader)
+            del tmp2[0]
+        embeddings = tmp1 + tmp2
+        currUser, userModel = model.Results.makeAll(inputDict, wordList, embeddings)
+        keys = ["email"] + ["openness", "conscientiousness", "neuroticism", "extraversion", "agreeableness"]
+        userScores = [session["email"]] + userModel.finalscores
+        scoresDict = dict(zip(keys, userScores))
+        scores.insert(scoresDict)
+        end = timeit.default_timer()
+        print("Runtime:", end-start)
         return redirect(url_for('index'))
     return render_template('survey.html')
 
@@ -82,22 +111,46 @@ def survey():
 def user(username):
     info = mongo.db.info
     users = mongo.db.users
+    mongo_posts = mongo.db.posts.find({})
     basic = users.find_one({'username' : username})
     if basic:
         user_info = info.find_one({'email' : basic['email']})
-        return render_template('user.html', basic=basic, user_info=user_info)
+        posts = []
+        for post in mongo_posts:
+            posts.append(post)
+        timeline = []
+        for post in posts: 
+            if post['recipient'] == basic['username']:
+                timeline.append(post)
+        print(timeline) 
+        return render_template('user.html', basic=basic, user_info=user_info, timeline=timeline)
     return "Sorry, no profile. <a href='/index'>Return to welcome page</a>"
 
 @app.route('/connect')
 def connect():
+    #info = mongo.db.info
+    #users = mongo.db.users
     usersDB = mongo.db.users.find({})
     infoDB = mongo.db.info.find({})
-    allUserData = []
+    scoresDB = mongo.db.scores.find({})
+    users = []
     for user in usersDB:
-        allUserData.append(user)
-    for i in range(len(tmp[i])):
-        allUserData[i].update(tmp[i])
-    return render_template('connect.html', **locals)
+        users.append(user)
+    
+    info = []
+    for user in infoDB:
+        info.append(user)
+
+    if model.Results.getIndexOfUser(session["email"], info) == "You are dumb":
+        return redirect(url_for('survey'))
+    
+    scores = []
+    for user in scoresDB:
+        scores.append(user)
+
+    res = model.Results(session["email"], users, info, scores)
+    teamMembers, friendsLocation, friendsSchool, friendsClasses = res.main()
+    return render_template('connect.html', **locals())
 
 @app.route('/add')
 def add():
