@@ -128,14 +128,29 @@ def user(username):
 
 @app.route('/connect')
 def connect():
+    #info = mongo.db.info
+    #users = mongo.db.users
     usersDB = mongo.db.users.find({})
     infoDB = mongo.db.info.find({})
-    allUserData = []
+    scoresDB = mongo.db.scores.find({})
+    users = []
     for user in usersDB:
-        allUserData.append(user)
-    for i in range(len(tmp[i])):
-        allUserData[i].update(tmp[i])
-    return render_template('connect.html', **locals)
+        users.append(user)
+    
+    info = []
+    for user in infoDB:
+        info.append(user)
+
+    if model.Results.getIndexOfUser(session["email"], info) == "You are dumb":
+        return redirect(url_for('survey'))
+    
+    scores = []
+    for user in scoresDB:
+        scores.append(user)
+
+    res = model.Results(session["email"], users, info, scores)
+    teamMembers, friendsLocation, friendsSchool, friendsClasses = res.main()
+    return render_template('connect.html', **locals())
 
 @app.route('/add')
 def add():
