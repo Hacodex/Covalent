@@ -32,7 +32,7 @@ mongo = PyMongo(app)
 @app.route('/index')
 
 def index():
-        jamesChu = {"name": "James Chu", "contact": "jameschu@umich.edu", "role": "Front and Backend Developer", "description": "I am an incoming freshman at the University of Michigan and I plan on studying computer science and business. Over quarantine, I've been drinking a lot of oat milk and I have a black lab named Parker. I hope to one day work in the FinTech industry."}
+    jamesChu = {"name": "James Chu", "contact": "jameschu@umich.edu", "role": "Front and Backend Developer", "description": "I am an incoming freshman at the University of Michigan and I plan on studying computer science and business. Over quarantine, I've been drinking a lot of oat milk and I have a black lab named Parker. I hope to one day work in the FinTech industry."}
     winsonChen = {"name": "Winson Chen", "contact": "winsonc@umich.edu", "role": "Front and Backend Developer", "description": "I am a student who is interested in computer engineering. I spend my weekends playing games, reading books, and listening to music on Spotify. Fluent in English, Chinese (kind of), and Pokémon type match-ups"}
     aaronZheng = {"name": "Aaron Zheng", "contact": "aaronzg@umich.edu", "role": "Front and Backend Developer", "description": "I like playing basketball. I am going to major in computer science. I want to become an entrepreneur. I like problem solving. My dream job is to work at Google."}
     winstonCai = {"name": "Winston Cai", "contact": "", "role": "Supporting cast", "description": "Winston Cai is a high school graduate from the Bronx High School of Science. I am interested in the humanities."}
