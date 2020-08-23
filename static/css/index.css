@@ -11,3 +11,8 @@
     background: transparent;
     font-family: 'Poppins', sans-serif;
 }
+
+body {
+    background-color: #FFF;
+    margin: 0 auto;
+}
