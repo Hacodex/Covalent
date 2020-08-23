@@ -21,3 +21,23 @@ body {
     position : fixed;
     left : 0px;
 }
+
+#Home {
+    position : fixed;
+    right : 450px;
+}
+
+#LoginSignup {
+    position : fixed;
+    right : 600px;
+}
+
+#Connect {
+    position : fixed;
+    right : 300px;
+}
+
+#Logout {
+    position : fixed;
+    right : 150px;
+}
