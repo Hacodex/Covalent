@@ -1,8 +1,180 @@
+<!DOCTYPE html>
 <html>
-    <head>
-        <title>{{ user.name }}'s Profile Page</title>
-    </head>
-    <body>
-        <h1> {{ user.name }} </h1>
-    </body>
+<head>
+<title>{{ basic['name'] }}'s Profile Page' </title>
+<!-- <link type="image/png" rel="icon" href=""> -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link rel="stylesheet" href="../static/css/styleHome.css">
+<!-- edit import style sheet for respective pages -->
+<style>
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif, ;
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: #333;
+}
+
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.topnav a.active {
+  background-color: #4CAF50;
+  color: white;
+}
+</style>
+</head>
+<body>
+    <header>
+      <div class="topnav navbar-dark bg-primary">
+          <a class="Logo" href='../index'><strong>Home</strong></a>
+          {% if not loggedIn %}
+          <a href="login"><strong>Login</strong></a>
+          <a href="signup"><strong>Signup</strong></a>
+          {% endif %}
+          {% if loggedIn %}
+          <a href="connect"><strong>Connect</strong></a>
+          <a href="logout"><strong>Logout</strong></a>
+          {% endif %}
+      </div>
+    </header>
+
+<!-- <div class = "container" >
+    <div class ="row text-center">
+        <div class ="col" >
+            <h2>Here is your Profile Page, to edit your infomation please click the Edit Button</h2>
+            <p>Some content..</p>
+        </div>
+    </div> -->
+
+<div class="container-fluid emp-profile">
+    <br>
+    <form method="post" >
+        <div class="row">
+            <div class="col-lg-3 mb-2">
+                <div class="profile-img mb-2">
+                        <div class="card">
+        <div class="card-body">
+            <img class="card-img-top" src="https://api.adorable.io/avatars/285/{{ basic["email"] }}.png" alt="" class="rounded-corners"/>
+
+        </div>
+</div>
+                    
+                </div>
+            <!--- <div class="col-md-1 ">
+                <a href="editProflie" class = "profile-edit-btn ">Edit Profile</a>
+            </div> -->
+            </div>
+            <div class="col-lg-6">
+                <div class="profile-head">
+                            <h1>
+                                {{ basic['name'] }}
+                            </h1>
+                            <h3>
+                                Email: {{ basic['email'] }}
+                            </h3>
+                            <h5 class="FILL IN"> <b>Biography:</b> {{ user_info["description"] }}  </h5>
+                </div>
+            </div>
+        </div>
+<div class = "row">
+<div class="col-md-3">
+    <div class="tab-content profile-tab" id="myTabContent">
+        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+            <div class="row">
+                <div class="col-md-4">
+                    <label><strong>Name</strong></label>
+                </div>
+                <div class="col-md-5">
+                    <p> {{ basic['name']}} </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <label><strong>Phone #</strong></label>
+                </div>
+                <div class="col-md-5">
+                    <p> {{ basic['phone'] }} </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <label><strong>State</strong></label>
+                </div>
+                <div class="col-md-5">
+                    <p> {{ user_info['state'] }} </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <label><strong>City</strong></label>
+                </div>
+                <div class="col-md-5">
+                    <p> {{ user_info['city'] }} </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <label><strong>Education</strong></label>
+                </div>
+                <div class="col-md-5">
+                    <p> {{ user_info['school'] }} </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <label><strong>Classes</strong></label>
+                </div>
+                <div class="col-md-5">
+                    <p> {{ user_info['classes'] }} </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-md-6 center">
+    <h3>{{ basic.name }}'s Timeline</h3>
+    {% for post in timeline %}
+    <div class="card border-dark mb-3">
+        <div class="card-body">
+            <h3>{{ post.title }}</h3> <h6>by {{ post.author }} ({{ post.authorUsername }})</h6>
+            <p>{{ post.post }}<p>
+        </div>
+          <div class="card-footer text-muted">
+    {{ post.time }}
+  </div>
+</div>
+    {% endfor %}
+</div>
+<div class="col-md-2">
+</div>
+</div>
+            </div>
+        </div>
+    </form>           
+</div>
+
+</div>
+
+<form method="post" action="/deleteAccount">
+    <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Delete Profile"/>
+</form>    
+</body>
 </html>

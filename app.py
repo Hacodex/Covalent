@@ -152,6 +152,24 @@ def connect():
     teamMembers, friendsLocation, friendsSchool, friendsClasses = res.main()
     return render_template('connect.html', **locals())
 
+@app.route('/createPost', methods=['POST','GET'])
+def createPost():
+    if request.method=="POST": 
+        if session:
+            usersDB = mongo.db.users.find({})
+            infoDB = mongo.db.info.find({})
+            scores = mongo.db.scores
+            posts = mongo.db.posts
+            basic = mongo.db.users.find_one({'username' : request.form['username']})
+            loggedInUser = mongo.db.users.find_one({'email' : session['email']})
+            if basic:
+                now = datetime.datetime.now()
+                timeStamp = now.strftime("%Y-%m-%d %H:%M:%S")
+                posts.insert({"author":loggedInUser['name'],"authorUsername":loggedInUser['username'], "recipient":request.form['username'], "time":timeStamp, "title":request.form["title"], "post":request.form["post"]})
+                return redirect(url_for('index'))
+        return "You are not logged in. Please <a href='login'>log in or sign up</a>"
+    return render_template('createPost.html')
+
 @app.route('/add')
 def add():
     # connect to the database
