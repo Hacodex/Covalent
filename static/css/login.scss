@@ -194,9 +194,53 @@ button {
       top: 0;
       width: $contW;
       height: 100%;
-      background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/142996/sections-3.jpg');
+      background-image: url('https://www.wallpaperup.com/uploads/wallpapers/2014/08/04/416753/047b97301f369b7590941c6091d2c260-1400.jpg');
       background-size: cover;
       transition: transform $switchAT ease-in-out;
+    }
+    &:after {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.6);
+      }
+    
+      @include signUpActive {
+        &:before {
+          transform: translate3d($formW,0,0);
+        }
+      }
+    
+      &__text {
+        z-index: 2;
+        position: absolute;
+        left: 0;
+        top: 50px;
+        width: 100%;
+        padding: 0 20px;
+        text-align: center;
+        color: #fff;
+        transition: transform $switchAT ease-in-out;
+    
+        h2 {
+          margin-bottom: 10px;
+          font-weight: normal;
+        }
+    
+        p {
+          font-size: 14px;
+          line-height: 1.5;
+        }
+    
+        &.m--up {
+    
+          @include signUpActive {
+            transform: translateX($imgW*2);
+          }
+        }
     }
 }
 }
