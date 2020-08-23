@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<!-- <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script> -->
+
+<head>
+    <link href="./static/css/survey.css" rel="stylesheet">
+    <title>
+        Create a Post
+    </title>
+</head>
+
+<body>
+	<header>
+		<div class="topnav navbar-dark bg-primary">
+			<a class="Logo" href='index'><strong>Home</strong></a>
+			{% if not loggedIn %}
+			<a href="login"><strong>Login/Signup</strong></a>
+			{% endif %}
+			{% if loggedIn %}
+			<a href="connect"><strong>Connect</strong></a>
+			<a href="logout"><strong>Logout</strong></a>
+			{% endif %}
+		</div>
+	</header>
+
+	<div class="Welcome">
+		<h1><strong>Covalent</strong></h1>
+		<h2>Networking Made Simple</h2>
+	</div>
+        <div class="questionnaire">
+	<form action="/createPost" method="POST">
+		<div class="option">
+			<label>
+                    <span>Title:</span>
+                    <br>
+                    <input type="text" name="title" required />
+                </label>
+
+		</div>
+		<div class="option">
+			<label>
+                    <span>Which user's timeline do you want to post on? If you want to post on your own timeline, leave this empty. Otherwise, please type their username: </span>
+                    <br>
+                    <input type="text" name="username" />
+                </label>
+		</div>
+        <div class="option">
+			<label>Enter your post: </label>
+			<br>
+			<textarea name="post" maxlength="1000" rows=5 cols=50 required></textarea>
+		</div>
+		<div class="button">
+			<button type="submit">Submit</button>
+		</div>
+	</form>
+    </div>
+
+</body>
+<footer>
+	<p>@2020 Copyright. Covalent. Non Profit Organization</p>
+	<a href="#mission"> About Us </a>
+	<a href="#team"> The Team</a>
+</footer>
+
+</html>

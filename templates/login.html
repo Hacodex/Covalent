@@ -1,18 +1,82 @@
 <html>
-    <head>
-        <title>
-            Log In Page
-        </title>
-    </head>
-    <body>
-        <h1>Log In Page</h1>
-        <form action='/login' method='POST'>
-            <label for 'email'>Email</label>
-            <input type='text' name='email'>
-            <label for 'password'>Password</label>
-            <input type='password' name='password'>
-            <input type='submit' value='Log In'>
-        </form>
-        <p><a href='/signup'>Sign up for an account</a></p>
-    </body>
-</html> 
+
+<head>
+    <title>Covalent</title>
+    <link href="./static/css/login.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+</head>
+
+<body>
+    <header>
+        <div class="topnav navbar-dark bg-primary">
+            <a class="Logo" href='index'><strong>Home</strong></a>
+        </div>
+    </header>
+    <div class="cont">
+        <div class="form sign-in">
+            <h2>Welcome back,</h2>
+            <form action="/login" method="POST">
+                <label>
+                    <span>Email</span>
+                    <input type="email" name="email" placeholder="Email" required />
+                </label>
+                <label>
+                    <span>Password</span>
+                    <input type="password" name="password" placeholder="Password" required />
+                </label>
+                <label>
+                    <button type="submit" class="submit">Sign In</button>
+                </label>
+            </form>
+        </div>
+        <div class="sub-cont">
+            <div class="img">
+                <div class="img__text m--up">
+                    <h2>New here?</h2>
+                    <p>Sign up and discover great amount of new opportunities!</p>
+                </div>
+                <div class="img__text m--in">
+                    <h2>One of us?</h2>
+                    <p>If you already has an account, just sign in. We've missed you!</p>
+                </div>
+                <div class="img__btn">
+                    <span class="m--up">Sign Up</span>
+                    <span class="m--in">Sign In</span>
+                </div>
+            </div>
+            <div class="form sign-up">
+                <h2>Time to feel like home,</h2>
+                <form action="/login" method="POST">
+                    <label>
+                        <span>Full Name</span>
+                        <input type="text" name="fullname" placeholder="Full Name" required />
+                    </label>
+                    <label>
+                        <span>Username</span>
+                        <input type="text" name="username" placeholder="Username" required />
+                    </label>
+                    <label>
+                        <span>Phone Number</span>
+                        <input type="text" name="phone" placeholder="Phone Number" required />
+                    </label>
+                    <label>
+                        <span>Email</span>
+                        <input type="email" name="email" placeholder="Email" required />
+                    </label>
+                    <label>
+                        <span>Password</span>
+                        <input type="password" name="password" placeholder="Password" required />
+                    </label>
+                    <button type="submit" class="submit">Sign Up</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.querySelector('.img__btn').addEventListener('click', function () {
+            document.querySelector('.cont').classList.toggle('s--signup');
+        });
+    </script>
+</body>
+
+</html>
