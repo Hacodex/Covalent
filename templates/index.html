@@ -23,7 +23,7 @@
     </div>
     
     <div class = "Description">
-      <h3>Our Mission</h3>
+      <h3 id="mission">Our Mission</h3>
         <p>
           In the midst of the COVID-19 pandemic,
           most colleges and universities have decided
@@ -39,65 +39,59 @@
           their school and classes and potentially create 
           lifelong friendships.
         </p>
+        <hr>
       <h4><strong>Find Friends</strong></h4>
       <p>
         Find new friends based on your courses, location, personality, and school.
       </p>
+      <hr>
       <h4><strong>Team Builder</strong></h4>
         <p>
           Using natural language processing, we can give you an optimal work team.
         </p>
+        <hr>
       <h4><strong>Chat Application</strong></h4>
         <p>
           Message other people on our website!
         </p>
     </div>
-    
-    <div class = "DevInfo">
-      <h3>Team</h3>
-      <div class="box">
-        <div class="box-part text-center">  
-          <img class="profile" src="https://www.bxsml.org/images/james.png" alt=""/>
-          <div class="title">
-            <h2>James Chu</h2>
-          </div>        
-          <div class="text">
-            <span>Front and Back End Developer</span>
-          </div>  
-        </div>
-        <div class="box-part text-center">  
-          <img class="profile" src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?h=350&auto=compress&cs=tinysrgb" alt=""/>
-          <div class="title">
-            <h2>Winson Chen</h2>
-          </div>        
-          <div class="text">
-            <span>Front End Developer</span>
-          </div>  
-        </div>
-        <div class="box-part text-center">  
-          <img class="profile" src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?h=350&auto=compress&cs=tinysrgb" alt=""/>
-          <div class="title">
-            <h2>Aaron Zheng</h2>
-          </div>        
-          <div class="text">
-            <span>Back End Developer</span>
-          </div>  
-        </div>
-        <div class="box-part text-center">  
-          <img class="profile" src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?h=350&auto=compress&cs=tinysrgb" alt=""/>
-          <div class="title">
-            <h2>Winston Cai</h2>
-          </div>        
-          <div class="text">
-            <span>Motivational Speaker</span>
-          </div>  
-        </div>
+    <div class="row">
+      {% for user in devTeam %}
+      <!-- Team member -->
+      <div class="col-xs-24 col-sm-12 col-md-3">
+          <div class="image-flip" >
+              <div class="mainflip flip-0">
+                  <div class="frontside">
+                      <div class="card">
+                          <div class="card-body text-center">
+                              <p><img class=" img-fluid" src="https://api.adorable.io/avatars/285/{{ user["user_email"] }}.png" alt="card image"></p>
+                              <h3 class="card-title"> {{ user["name"] }} </h3>
+                              <h5 class="card-text"> {{ user["contact"] }} </h5>
+                              <h7 class="card-text"> {{ user["role"]}} </h7>
+                              <a href="https://www.fiverr.com/share/qb8D02" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></a>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="backside">
+                      <div class="card">
+                          <div class="card-body text-center mt-2">
+                              <h4 class="card-title">{{ user["name"] }}</h4>
+                              <h5> Biography: {{ user['description'] }} </h5>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
       </div>
-    </div>
-  </body>
+      {% endfor %}
+      <!-- ./Team member -->
 
+  </div>  
+
+  </body>
   <footer>
     <p>@2020 Copyright. Covalent. Non Profit Organization</p>
+    <a href="#mission"> About Us </a>
+    <a href="#team"> The Team</a>
   </footer>
-</html>
-</html>
+</html>          
