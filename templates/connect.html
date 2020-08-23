@@ -1,0 +1,63 @@
+<html>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <head>
+        <title>Connect</title>
+        <link href="./static/css/connect.css" rel="stylesheet">
+    </head>
+    <body>
+        <header>
+          <div class="topnav navbar-dark bg-primary">
+              <a class="Logo" href='index'><strong>Home</strong></a>
+              <a href="logout"><strong>Logout</strong></a>
+          </div>
+        </header>
+    
+            <div class = "Welcome">
+                <h1><strong>Connect With Others</strong></h1>
+            </div>
+    
+            <div class="Team">
+                <h2>Teammates</h2>
+                <ul> 
+                    {% for person in teamMembers %}
+                    {% if person.name != "" %}
+                    <li>
+                    <!-- Team member -->
+                        <div class="col-">
+                            <div class="image-flip" >
+                                <div class="mainflip flip-0">
+                                    <div class="frontside">
+                                        <div class="card">
+                                            <div class="card-body text-center">
+                                                <p><img class=" img-fluid" src="https://api.adorable.io/avatars/285/{{ person.email }}.png" alt="card image"></p>
+                                                <h3 class="card-title"> {{ person.name.title() }} </h3>
+                                                <h5 class="card-text"> {{ person.city.title() }} </h5>
+                                                <h7 class="card-text"> {{ person.school.title() }} </h7>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="backside">
+                                        <div class="card">
+                                            <div class="card-body text-center mt-2">
+                                                <h4 class="card-title">{{ person.name.title() }}</h4>
+                                                <h5>{{ person.origText }} </h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    {% endif %}
+                    {% endfor %}
+                    <!-- ./Team member -->
+                </ul>
+            </div>
+        </div>
+    </body>
+    <footer>
+        <p>@2020 Copyright. Covalent. Non Profit Organization</p>
+    </footer>
+</html>

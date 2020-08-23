@@ -1,35 +1,143 @@
-body{
-    height: 100%;
+@import url('https://fonts.googleapis.com/css?family=Poppins');
+
+* {
     margin: 0;
-    background: lightgray;
-    background-color: #466995;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
     font-family: 'Poppins', sans-serif;
 }
-.myForm{
-    background-color: rgba(0,0,0,0.5) !important;
-    padding: 15px !important;
-    border-radius: 15px !important;
-    color: white;
-}
-input{
-    border-radius:0 15px 15px 0 !important;
-}
-input:focus{
-    outline: none;
-    box-shadow:none !important;
-    border:1px solid #ccc !important;
-}
-.br-15{
-    border-radius: 15px 0 0 15px !important;
-}
-.submit_btn{
-    border-radius: 15px !important;
-    background-color: gray !important;
-    border: 0 !important;
-    margin: auto;
-    width: 200px;
+
+body {
+    background-color: #FFF;
+    margin: 0 auto;
 }
 
-.form-control{
-    width: 600px;
-} 
+header {
+    background-color: #466995;
+    position: relative;
+    text-align: center;
+    width: 100%;
+    height: 80px;
+    line-height: 80px;
+    padding: 0 0;
+}
+    .topnav {
+        overflow: hidden;
+        background-color: #466995;
+    }
+    
+        .topnav a {
+            float: left;
+            color: #f2f2f2;
+            text-align: center;
+            padding-left: 40px;
+            padding-right: 40px;
+            text-decoration: none;
+            font-size: 17px;
+        }
+    
+        .topnav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+    
+        .topnav a.active {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+h1 {
+	text-align: center;
+}
+
+form {
+	padding-top: 20px;
+}
+
+button {
+	color: #7FDBFF;
+	background-color: #0074D9;
+	width: 150px;
+	border: none;
+	border-radius: 5px;
+	font-size: 18px;
+	padding: 10px;
+	display: block;
+	margin: auto;
+	cursor: pointer;
+	outline: none;
+}
+
+button:hover {
+	color: #0074D9;
+	background-color: #7FDBFF;
+}
+
+input[type=text] {
+	background-color: white;
+	font-size: 15px;
+	color: black;
+	border: none;
+	border-bottom: 1px solid #0074D9;
+	padding-top: 10px;
+	outline: none;
+}
+
+label {
+	cursor: pointer;
+	padding-left: 10px;
+	font-size: 18px;
+}
+
+.questionnaire {
+	color: #0074D9;
+	border: 1px solid #0074D9;
+	width: 750px;
+	height: 500px;
+  margin: 100px auto;
+	border-radius: 5px;
+	padding: 20px 20px 0;
+	
+}
+
+.option {
+	padding: 15px 0 0 60px;
+}
+
+.radio, label {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.button {
+	padding-top: 50px;
+}
+
+.text {
+	padding-left: 40px;
+}
+
+.clearfix:after { 
+   content: "."; 
+   visibility: hidden; 
+   display: block; 
+   height: 0; 
+   clear: both;
+}
+
+input:focus::-webkit-input-placeholder { 
+	color:transparent; 
+}
+input:focus:-moz-placeholder { 
+	color:transparent; 
+} /* FF 4-18 */
+input:focus::-moz-placeholder { 
+	color:transparent;
+} /* FF 19+ */
+input:focus:-ms-input-placeholder { 
+	color:transparent; 
+} /* IE 10+ */
