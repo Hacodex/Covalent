@@ -28,12 +28,12 @@
                     <button type="submit" class="submit">Sign In</button>
                 </label>
             </form>
-            <div class="sub-cont">
-                <div class="img">
-                    <div class="img__text m--up">
-                        <h2>New here?</h2>
-                        <p>Sign up and discover great amount of new opportunities!</p>
-                    </div>
+        </div>
+        <div class="sub-cont">
+            <div class="img">
+                <div class="img__text m--up">
+                    <h2>New here?</h2>
+                    <p>Sign up and discover great amount of new opportunities!</p>
                 </div>
                 <div class="img__text m--in">
                     <h2>One of us?</h2>
@@ -46,22 +46,33 @@
             </div>
             <div class="form sign-up">
                 <h2>Time to feel like home,</h2>
-                <label>
-                    <span>Name</span>
-                    <input type="text" />
-                </label>
-                <label>
-                    <span>Email</span>
-                    <input type="email" />
-                </label>
-                <label>
-                    <span>Password</span>
-                    <input type="password" />
-                </label>
-                <button type="button" class="submit">Sign Up</button>
+                <form action="/login" method="POST">
+                    <label>
+                        <span>Full Name</span>
+                        <input type="text" name="fullname" placeholder="Full Name" required />
+                    </label>
+                    <label>
+                        <span>Username</span>
+                        <input type="text" name="username" placeholder="Username" required />
+                    </label>
+                    <label>
+                        <span>Phone Number</span>
+                        <input type="text" name="phone" placeholder="Phone Number" required />
+                    </label>
+                    <label>
+                        <span>Email</span>
+                        <input type="email" name="email" placeholder="Email" required />
+                    </label>
+                    <label>
+                        <span>Password</span>
+                        <input type="password" name="password" placeholder="Password" required />
+                    </label>
+                    <button type="submit" class="submit">Sign Up</button>
+                </form>
             </div>
         </div>
     </div>
+    
 </body>
 
 </html>
