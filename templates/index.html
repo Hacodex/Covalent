@@ -1,20 +1,24 @@
 <!DOCTYPE html>
 <html>
   <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+  <!-- <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script> -->
   <head>
     <title>Covalent</title>
     <link href="./static/css/index.css" rel="stylesheet">
   </head>
   <body>
     <header>
-      <ul>
-        <li class= "Logo"><strong>Home</strong></li>
-        <li><a href="login"><strong>Login</strong></a></li>
-        <li><a href="signup"><strong>Signup</strong></a></li>
-        <li><a href="logout"><strong>Logout</strong></a></li>
-      </ul>
+      <div class="topnav navbar-dark bg-primary">
+          <a class="Logo" href='index'><strong>Home</strong></a>
+          {% if not loggedIn %}
+          <a href="login"><strong>Login</strong></a>
+          <a href="signup"><strong>Signup</strong></a>
+          {% endif %}
+          {% if loggedIn %}
+          <a href="logout"><strong>Logout</strong></a>
+          {% endif %}
+      </div>
     </header>
     
     <div class = "Welcome">
@@ -23,7 +27,7 @@
     </div>
     
     <div class = "Description">
-      <h3>Our Mission</h3>
+      <h3 id="mission">Our Mission</h3>
         <p>
           In the midst of the COVID-19 pandemic,
           most colleges and universities have decided
@@ -39,10 +43,12 @@
           their school and classes and potentially create 
           lifelong friendships.
         </p>
+        <hr>
       <h4><strong>Find Friends</strong></h4>
       <p>
         Find new friends based on your courses, location, personality, and school.
       </p>
+      <hr>
       <h4><strong>Team Builder</strong></h4>
         <p>
           Using natural language processing, we can give you an optimal work team.
@@ -51,9 +57,10 @@
         <p>
           Message other people on our website!
         </p>
+        <hr>
     </div>
     
-    <img src = "">
+    <h3 id="dev">Development Team</h3>
     <div class="row">
       {% for i in range(4) %}
       <!-- Team member -->
@@ -89,6 +96,8 @@
 
   <footer>
     <p>@2020 Copyright. Covalent. Non Profit Organization</p>
+    <a href="#mission"> About Us </a>
+    <a href="#team"> The Team</a>
   </footer>
 </html>
 </html>
